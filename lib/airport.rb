@@ -7,6 +7,7 @@ class Airport
   end
 
   def land_plane(plane)
+    raise "This plan has already landed" unless plane.flying?
     @hanger << plane
   end
 
