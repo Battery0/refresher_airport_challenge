@@ -10,12 +10,14 @@ describe Airport do
       expect(airport.land_plane(plane_dbl)).to eq([plane_dbl])
     end
 
-  #   it 'can land multiple planes' do
-  #     plane_1
-  #     plane_2
-  #     plane_3
-  #     expect(airport.land_plane(plane_dbl)).to eq([plane_dbl, plane_dbl, plane_dbl, plane_dbl])
-  #   end
+    it 'can land multiple planes at the airport' do
+      plane_one = plane_dbl
+      plane_two = plane_dbl
+      plane_three = plane_dbl
+      airport.land_plane(plane_one)
+      airport.land_plane(plane_two)
+      expect(airport.land_plane(plane_three)).to eq([plane_one, plane_two, plane_three])
+    end
   end
 
 end

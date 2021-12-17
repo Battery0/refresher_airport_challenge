@@ -1,13 +1,13 @@
-# require 'plane'
+require 'plane'
 
-# describe Plane do
+describe Plane do
 
-#   let(:plane) { described_class.new }
+  let(:plane) { described_class.new }
 
-#   describe '' do
-#     it '' do
+  describe '' do
+    it '' do
       
-#     end
-#   end
+    end
+  end
 
-# end
+end
