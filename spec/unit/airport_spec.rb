@@ -21,11 +21,14 @@ describe Airport do
   end
 
   describe '#plane_take_off' do
-    it 'removes the plane from the airport' do
+    it 'confiorms removal of the plane from the airport' do
       subject.land_plane(plane_one)
-      subject.plane_take_off(plane_one)
       expect { subject.plane_take_off(plane_one) }.to output("Plane #{plane_one} has taken off from the airport\n").to_stdout
     end
+  end
+
+  it 'raises error if trying to take off a plane that isn\'t in the airport' do
+    expect { subject.plane_take_off(plane_one) }.to raise_error("That plane is not at the airport")
   end
 
 end
