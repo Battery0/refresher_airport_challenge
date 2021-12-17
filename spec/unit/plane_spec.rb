@@ -10,4 +10,10 @@ describe Plane do
     end
   end
 
+  describe '#taken_off' do
+    it 'returns true if the plane has taken off' do
+      expect(subject.taken_off).to eq(true)
+    end
+  end
+
 end
