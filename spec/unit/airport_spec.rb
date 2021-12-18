@@ -23,7 +23,7 @@ describe Airport do
 
     it 'raises error if trying to land a plane that has already landed' do
       allow(plane_dbl).to receive(:flying?).and_return(false)
-      expect { subject.land_plane(plane_one) }.to raise_error("This plan has already landed")
+      expect { airport.land_plane(plane_one) }.to raise_error("This plane has already landed")
     end
 
   end
@@ -31,13 +31,19 @@ describe Airport do
   describe '#plane_take_off' do
     it 'confirms removal of the plane from the airport' do
       allow(plane_dbl).to receive(:flying?).and_return(true)
-      subject.land_plane(plane_one)
-      expect { subject.plane_take_off(plane_one) }.to output("Plane #{plane_one} has taken off from the airport\n").to_stdout
+      airport.land_plane(plane_one)
+      expect { airport.plane_take_off(plane_one) }.to output("Plane #{plane_one} has taken off from the airport\n").to_stdout
+    end
+
+    it 'raises error if trying to take off a plane that isn\'t in the airport' do
+      expect { airport.plane_take_off(plane_one) }.to raise_error("That plane is not at the airport")
     end
   end
 
-  it 'raises error if trying to take off a plane that isn\'t in the airport' do
-    expect { subject.plane_take_off(plane_one) }.to raise_error("That plane is not at the airport")
+  describe '#add_new_plane' do
+    it 'adds a newly created plane to the airport hanger' do
+      expect(airport.add_new_plane(plane_one)).to eq([plane_one])
+    end
   end
 
 end

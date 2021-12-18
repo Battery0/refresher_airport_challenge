@@ -6,8 +6,12 @@ class Airport
     @hanger = []
   end
 
+  def add_new_plane(plane)
+    @hanger << plane
+  end
+
   def land_plane(plane)
-    raise "This plan has already landed" unless plane.flying?
+    raise "This plane has already landed" unless plane.flying?
     @hanger << plane
   end
 
@@ -24,3 +28,12 @@ class Airport
   end
 
 end
+
+
+# ap = Airport.new
+# p1 = Plane.new
+# p2 = Plane.new
+
+# p p1
+# ap.plane_take_off(p1)
+# p p1
