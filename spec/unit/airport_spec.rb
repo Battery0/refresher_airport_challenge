@@ -29,7 +29,7 @@ describe Airport do
       expect { airport.land_plane(plane_one) }.to raise_error("This plane has already landed")
     end
 
-    it 'raises error when trying to land a plane if the airport is full' do
+    it 'raises error when trying to land a plane if the airport is full at default capacity' do
       allow(plane_dbl).to receive(:flying?).and_return(true)
       allow(plane_dbl).to receive(:landed).and_return(false)
       airport.land_plane(plane_one)
