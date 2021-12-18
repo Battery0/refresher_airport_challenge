@@ -11,13 +11,13 @@ describe Airport do
   describe '#land_plane' do
     it 'tells a plane to land at the airport' do
       allow(plane_dbl).to receive(:flying?).and_return(true)
-      allow(plane_dbl).to receive(:landed).and_return(false) #new
+      allow(plane_dbl).to receive(:landed).and_return(false)
       expect(airport.land_plane(plane_one)).to eq([plane_one])
     end
 
     it 'can land multiple planes at the airport' do
       allow(plane_dbl).to receive(:flying?).and_return(true)
-      allow(plane_dbl).to receive(:landed).and_return(false) #new
+      allow(plane_dbl).to receive(:landed).and_return(false)
       airport.land_plane(plane_one)
       airport.land_plane(plane_two)
       expect(airport.land_plane(plane_three)).to eq([plane_one, plane_two, plane_three])
@@ -33,7 +33,8 @@ describe Airport do
   describe '#plane_take_off' do
     it 'confirms removal of the plane from the airport' do
       allow(plane_dbl).to receive(:flying?).and_return(true)
-      allow(plane_dbl).to receive(:landed).and_return(false) #new
+      allow(plane_dbl).to receive(:landed).and_return(false)
+      allow(plane_dbl).to receive(:taken_off).and_return(true)
       airport.land_plane(plane_one)
       expect { airport.plane_take_off(plane_one) }.to output("Plane #{plane_one} has taken off from the airport\n").to_stdout
     end

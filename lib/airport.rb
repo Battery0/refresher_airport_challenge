@@ -18,6 +18,7 @@ class Airport
 
   def plane_take_off(plane)
     raise "That plane is not at the airport" unless plane_in_hanger?(plane)
+    plane.taken_off
     @hanger.delete(plane)
     puts "Plane #{plane} has taken off from the airport"
   end
