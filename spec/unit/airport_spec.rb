@@ -7,6 +7,7 @@ describe Airport do
   let(:plane_one) { plane_dbl }
   let(:plane_two) { plane_dbl }
   let(:plane_three) { plane_dbl }
+  let(:plane_four) { plane_dbl }
 
   describe '#land_plane' do
     it 'tells a plane to land at the airport' do
@@ -26,6 +27,15 @@ describe Airport do
     it 'raises error if trying to land a plane that has already landed' do
       allow(plane_dbl).to receive(:flying?).and_return(false)
       expect { airport.land_plane(plane_one) }.to raise_error("This plane has already landed")
+    end
+
+    it 'raises error when trying to land a plane if the airport is full' do
+      allow(plane_dbl).to receive(:flying?).and_return(true)
+      allow(plane_dbl).to receive(:landed).and_return(false)
+      airport.land_plane(plane_one)
+      airport.land_plane(plane_two)
+      airport.land_plane(plane_three)
+      expect { airport.land_plane(plane_four) }.to raise_error("The airport is currently full")
     end
 
   end
