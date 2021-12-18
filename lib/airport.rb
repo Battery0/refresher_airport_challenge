@@ -4,8 +4,9 @@ class Airport
 
   DEFAULT_AIRPORT_CAPACITY = 3
 
-  def initialize
+  def initialize(capacity = DEFAULT_AIRPORT_CAPACITY)
     @hanger = []
+    @capacity = capacity
   end
 
   def add_new_plane(plane)
@@ -30,7 +31,7 @@ class Airport
   private
 
   def airport_full_error
-    raise "The airport is currently full" if @hanger.length == DEFAULT_AIRPORT_CAPACITY
+    raise "The airport is currently full" if @hanger.length == @capacity
   end
 
   def plane_in_hanger?(plane)
@@ -43,15 +44,15 @@ class Airport
 
 end
 
-# ap = Airport.new
+# ap = Airport.new(2)
 # p1 = Plane.new
 # p2 = Plane.new
 # p3 = Plane.new
-# p4 = Plane.new
+# # p4 = Plane.new
 
 # ap.add_new_plane(p1)
 # ap.add_new_plane(p2)
-# ap.add_new_plane(p3)
+# p ap.add_new_plane(p3)
 # ap.plane_take_off(p3)
 # ap.add_new_plane(p4)
 # ap.land_plane(p3)
