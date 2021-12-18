@@ -7,12 +7,12 @@ class Airport
   end
 
   def add_new_plane(plane)
-    @hanger << plane
+    add_plane_to_hanger(plane)
   end
 
   def land_plane(plane)
     raise "This plane has already landed" unless plane.flying?
-    @hanger << plane
+    add_plane_to_hanger(plane)
   end
 
   def plane_take_off(plane)
@@ -25,6 +25,10 @@ class Airport
 
   def plane_in_hanger?(plane)
     @hanger.any? { |aircraft| aircraft == plane }
+  end
+
+  def add_plane_to_hanger(plane)
+    @hanger << plane
   end
 
 end
