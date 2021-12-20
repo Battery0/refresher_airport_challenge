@@ -22,8 +22,9 @@ class Airport
     add_plane_to_hanger(plane)
   end
 
-  def plane_take_off(plane)
+  def plane_take_off(plane, weather = Weather.new)
     raise "That plane is not at the airport" unless plane_in_hanger?(plane)
+    raise "The weather is currently stormy and planes can't take off" if weather.type == "stormy"
     plane.taken_off
     puts "Plane #{plane} has taken off from the airport"
     @hanger.delete(plane)

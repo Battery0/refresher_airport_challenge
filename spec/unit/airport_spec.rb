@@ -10,6 +10,7 @@ describe Airport do
   let(:plane_three) { plane_dbl }
   let(:plane_four) { plane_dbl }
   let(:plane_five) { plane_dbl }
+  let(:stormy_weather) { double(:stormy_weather) }
 
   describe '#land_plane' do
     it 'tells a plane to land at the airport' do
@@ -48,7 +49,6 @@ describe Airport do
       airport_variable_capacity.land_plane(plane_three)
       airport_variable_capacity.land_plane(plane_four)
       expect { airport_variable_capacity.land_plane(plane_five) }.to raise_error("The airport is currently full")
-      p airport_variable_capacity
     end
 
   end
@@ -65,6 +65,16 @@ describe Airport do
     it 'raises error if trying to take off a plane that isn\'t in the airport' do
       expect { airport.plane_take_off(plane_one) }.to raise_error("That plane is not at the airport")
     end
+
+    it 'prevents plane take off if the weather is stormy' do
+      allow(plane_dbl).to receive(:flying?).and_return(true)
+      allow(plane_dbl).to receive(:landed).and_return(false)
+      allow(plane_dbl).to receive(:taken_off).and_return(true)
+      allow(stormy_weather ).to receive(:type).and_return("stormy")
+      airport.land_plane(plane_one)
+      expect { airport.plane_take_off(plane_one, stormy_weather) }.to raise_error("The weather is currently stormy and planes can't take off")
+    end
+
   end
 
   describe '#add_new_plane' do
