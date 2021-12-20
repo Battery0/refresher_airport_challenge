@@ -1,4 +1,5 @@
-require_relative '../lib/plane'
+require_relative './plane'
+require_relative './weather'
 
 class Airport
 
@@ -44,8 +45,9 @@ class Airport
 
 end
 
-# ap = Airport.new(2)
-# p1 = Plane.new
+# p ap = Airport.new(2)
+# p p1 = Plane.new
+# p weather = Weather.new
 # p2 = Plane.new
 # p3 = Plane.new
 # # p4 = Plane.new
