@@ -2,16 +2,15 @@ require 'airport'
 
 describe Airport do
 
-  let(:airport) { described_class.new }
-  let(:airport_variable_capacity) { described_class.new(4) }
+  let(:weather_dbl) { double(:weather_dbl) }
+  let(:airport) { described_class.new(weather_dbl) }
+  let(:airport_variable_capacity) { described_class.new(weather_dbl, 4) }
   let(:plane_dbl) { double(:plane) }
   let(:plane_one) { plane_dbl }
   let(:plane_two) { plane_dbl }
   let(:plane_three) { plane_dbl }
   let(:plane_four) { plane_dbl }
   let(:plane_five) { plane_dbl }
-  let(:stormy_weather) { double(:stormy_weather) }
-  let(:airport_variable_weather) { described_class.new(3, stormy_weather) }
 
   describe '#land_plane' do
     it 'tells a plane to land at the airport' do
@@ -59,6 +58,7 @@ describe Airport do
       allow(plane_dbl).to receive(:flying?).and_return(true)
       allow(plane_dbl).to receive(:landed).and_return(false)
       allow(plane_dbl).to receive(:taken_off).and_return(true)
+      allow(weather_dbl).to receive(:type).and_return("sunny")
       airport.land_plane(plane_one)
       expect { airport.plane_take_off(plane_one) }.to output("Plane #{plane_one} has taken off from the airport\n").to_stdout
     end
@@ -71,9 +71,9 @@ describe Airport do
       allow(plane_dbl).to receive(:flying?).and_return(true)
       allow(plane_dbl).to receive(:landed).and_return(false)
       allow(plane_dbl).to receive(:taken_off).and_return(true)
-      allow(stormy_weather).to receive(:type).and_return("stormy")
-      airport_variable_weather.land_plane(plane_one)
-      expect { airport_variable_weather.plane_take_off(plane_one) }.to raise_error("The weather is currently stormy and planes can't take off")
+      allow(weather_dbl).to receive(:type).and_return("stormy")
+      airport.land_plane(plane_one)
+      expect { airport.plane_take_off(plane_one) }.to raise_error("The weather is currently stormy and planes can't take off")
     end
 
   end
