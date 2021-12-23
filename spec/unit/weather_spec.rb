@@ -10,7 +10,7 @@ describe Weather do
       expect(weather.type).to eq("sunny")
     end
 
-    it 'should randomly return stormy weather  some of the time' do
+    it 'should randomly return stormy weather some of the time' do
       allow(weather).to receive(:type) { "stormy" }
       expect(weather.type).to eq("stormy")
     end

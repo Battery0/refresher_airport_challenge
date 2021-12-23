@@ -18,6 +18,7 @@ class Airport
 
   def land_plane(plane)
     raise "This plane has already landed" unless plane.flying?
+    raise "The weather is currently stormy and planes can't take off" if @weather.type == "stormy"
     airport_full_error
     plane.landed
     add_plane_to_hanger(plane)
@@ -46,3 +47,10 @@ class Airport
   end
 
 end
+
+# ap = Airport.new
+# p1 = Plane.new
+# ap.add_new_plane(p1)
+# p ap.plane_take_off(p1)
+
+
