@@ -13,6 +13,7 @@ class Airport
 
   def add_new_plane(plane)
     airport_full_error
+    raise "The plane #{plane} is already in the hanger" if plane_in_hanger?(plane)
     add_plane_to_hanger(plane)
   end
 
