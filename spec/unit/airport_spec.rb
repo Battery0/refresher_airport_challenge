@@ -4,7 +4,7 @@ describe Airport do
 
   let(:weather_dbl) { double(:weather_dbl) }
   let(:airport) { described_class.new(weather_dbl) }
-  let(:airport_variable_capacity) { described_class.new(weather_dbl, 4) }
+  let(:airport_variable_capacity) { described_class.new(weather_dbl, capacity: 4) }
   let(:plane_dbl) { double(:plane) }
   let(:plane_one) { plane_dbl }
   let(:plane_two) { plane_dbl }
