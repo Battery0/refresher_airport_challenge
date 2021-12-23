@@ -2,8 +2,8 @@ require 'airport'
 
 describe 'feature test' do
 
-  let(:weather_good_dbl) { double(:weather_good_dbl, { type: "sunny" } ) }
-  let(:weather_bad_dbl) { double(:weather_dbl, { type: "stormy" } ) }
+  let(:weather_good_dbl) { double(:weather_good_dbl, { type: "sunny" }) }
+  let(:weather_bad_dbl) { double(:weather_dbl, { type: "stormy" }) }
   let(:weather_dbl) { double(:weather) }
 
   it 'allows multiple planes to land and take off from the airport when the weather is good' do
