@@ -28,11 +28,15 @@ class Airport
     raise "That plane is not at the airport" unless plane_in_hanger?(plane)
     weather_check
     plane.taken_off
-    puts "Plane #{plane} has taken off from the airport"
+    plane_takeoff_confirmation(plane)
     @hanger.delete(plane)
   end
 
   private
+
+  def plane_takeoff_confirmation(plane)
+    puts "Plane #{plane} has taken off from the airport"
+  end
 
   def weather_check
     raise "The weather is currently stormy and planes can't take off" if @weather.type == "stormy"
