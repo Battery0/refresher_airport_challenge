@@ -4,6 +4,7 @@ describe 'feature test' do
 
   let(:weather_good_dbl) { double(:weather_good_dbl, { type: "sunny" } ) }
   let(:weather_bad_dbl) { double(:weather_dbl, { type: "stormy" } ) }
+  let(:weather_dbl) { double(:weather) }
 
   it 'allows multiple planes to land and take off from the airport when the weather is good' do
     airport = Airport.new(weather_good_dbl, capacity: 5)
@@ -32,6 +33,16 @@ describe 'feature test' do
     plane_one = Plane.new
     airport.add_new_plane(plane_one)
     expect { airport.plane_take_off(plane_one) }.to raise_error("The weather is currently stormy and planes can't take off")
+  end
+
+  it 'doesn\'t allow planes to land when the weather is bad' do
+    allow(weather_dbl).to receive(:type).and_return("sunny")
+    airport = Airport.new(weather_dbl)
+    plane_one = Plane.new
+    airport.add_new_plane(plane_one)
+    airport.plane_take_off(plane_one)
+    allow(weather_dbl).to receive(:type).and_return("stormy")
+    expect { airport.land_plane(plane_one) }.to raise_error("The weather is currently stormy and planes can't take off")
   end
 
 end
