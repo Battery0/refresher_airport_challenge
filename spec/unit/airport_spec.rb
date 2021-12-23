@@ -100,7 +100,7 @@ describe Airport do
 
     it 'raises an error if trying to add a new plane to the hanger that is already there' do
       airport.add_new_plane(plane_one)
-      expect { airport.add_new_plane(plane_one) }.to raise_error("The plane #{plane} is already in the hanger")
+      expect { airport.add_new_plane(plane_one) }.to raise_error("The plane #{plane_one} is already in the hanger")
     end
 
   end
