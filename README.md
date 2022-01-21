@@ -47,7 +47,7 @@ I want to prevent landing when weather is stormy
 In your terminal run:
 `git clone https://github.com/Battery0/refresher_airport_challenge.git`
 
-To install all project dependancies, in the project directory run:
+To install all project dependencies, in the project directory run:
 `bundle`
 
 ## Usage
