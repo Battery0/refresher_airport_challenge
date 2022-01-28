@@ -16,17 +16,4 @@ describe Plane do
     end
   end
 
-  # this describe block is testing state - is it possible to test behaviour instead? I need to come back to this?
-  describe '#flying?' do
-    it 'returns false if the plane has landed' do
-      plane.landed
-      expect(plane.flying?).to eq(false)
-    end
-
-    it 'returns true if the plane has not landed' do
-      plane.taken_off
-      expect(plane.flying?).to eq(true)
-    end
-  end
-
 end
