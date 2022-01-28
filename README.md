@@ -63,6 +63,4 @@ To interact with the program:
   * You will be notified if the plane can't land due to the weather
 
 ## Running Tests
-To run the test suite, in the project directory run:
-
-'rspec'
+To run the test suite, in the project directory run: `rspec`
