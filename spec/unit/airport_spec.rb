@@ -94,13 +94,13 @@ describe Airport do
   end
 
   describe '#add_new_plane' do
-    it 'adds a newly created plane to the airport hanger' do
+    it 'adds a newly created plane to the airport hangar' do
       expect(airport.add_new_plane(plane_one)).to eq([plane_one])
     end
 
-    it 'raises an error if trying to add a new plane to the hanger that is already there' do
+    it 'raises an error if trying to add a new plane to the hangar that is already there' do
       airport.add_new_plane(plane_one)
-      expect { airport.add_new_plane(plane_one) }.to raise_error("The plane #{plane_one} is already in the hanger")
+      expect { airport.add_new_plane(plane_one) }.to raise_error("The plane #{plane_one} is already in the hangar")
     end
 
   end

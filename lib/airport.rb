@@ -7,14 +7,14 @@ class Airport
 
   def initialize(weather = Weather.new, capacity: DEFAULT_AIRPORT_CAPACITY)
     @weather = weather
-    @hanger = []
+    @hangar = []
     @capacity = capacity
   end
 
   def add_new_plane(plane)
     airport_full_error
-    raise "The plane #{plane} is already in the hanger" if plane_in_hanger?(plane)
-    add_plane_to_hanger(plane)
+    raise "The plane #{plane} is already in the hangar" if plane_in_hangar?(plane)
+    add_plane_to_hangar(plane)
   end
 
   def land_plane(plane)
@@ -22,15 +22,15 @@ class Airport
     weather_check
     airport_full_error
     plane.landed
-    add_plane_to_hanger(plane)
+    add_plane_to_hangar(plane)
   end
 
   def plane_take_off(plane)
-    raise "That plane is not at the airport" unless plane_in_hanger?(plane)
+    raise "That plane is not at the airport" unless plane_in_hangar?(plane)
     weather_check
     plane.taken_off
     plane_takeoff_confirmation(plane)
-    @hanger.delete(plane)
+    @hangar.delete(plane)
   end
 
   private
@@ -44,15 +44,15 @@ class Airport
   end
 
   def airport_full_error
-    raise "The airport is currently full" if @hanger.length == @capacity
+    raise "The airport is currently full" if @hangar.length == @capacity
   end
 
-  def plane_in_hanger?(plane)
-    @hanger.any? { |aircraft| aircraft == plane }
+  def plane_in_hangar?(plane)
+    @hangar.any? { |aircraft| aircraft == plane }
   end
 
-  def add_plane_to_hanger(plane)
-    @hanger << plane
+  def add_plane_to_hangar(plane)
+    @hangar << plane
   end
 
 end
