@@ -1,4 +1,4 @@
-# Airport Challenge
+# Airport Challenge ~ 100% test coverage
 
 To create a fully unit & feature test driven program that controls the flow of planes in and out of an airport. Planes should only be allowed to take off and land when the weather is 'sunny' and not 'stormy', a random weather generator is used to simulate weather conditions.
 
